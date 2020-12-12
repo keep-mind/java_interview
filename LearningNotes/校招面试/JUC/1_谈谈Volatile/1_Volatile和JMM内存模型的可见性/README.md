@@ -136,7 +136,7 @@ public class VolatileDemo {
 
             System.out.println(Thread.currentThread().getName() + "\t come in");
 
-            // 线程睡眠3秒，假设在进行运算
+            // 线程睡眠3秒，假设在进行运算，目的是让主线程和AAA线程先同时拿到主内存变量的副本
             try {
                 TimeUnit.SECONDS.sleep(3);
             } catch (InterruptedException e) {
