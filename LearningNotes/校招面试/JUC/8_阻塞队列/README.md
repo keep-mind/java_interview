@@ -539,7 +539,7 @@ t2	 0
 
 class MyResource {
     // 默认开启，进行生产消费
-    // 这里用到了volatile是为了保持数据的可见性，也就是当TLAG修改时，要马上通知其它线程进行修改
+    // 这里用到了volatile是为了保持数据的可见性，也就是当FLAG修改时，要马上通知其它线程进行修改
     private volatile boolean FLAG = true;
 
     // 使用原子包装类，而不用number++
@@ -582,7 +582,7 @@ class MyResource {
             }
         }
 
-        System.out.println(Thread.currentThread().getName() + "\t 停止生产，表示FLAG=false，生产介绍");
+        System.out.println(Thread.currentThread().getName() + "\t 停止生产，表示FLAG=false，生产结束");
     }
 
     /**
@@ -592,7 +592,7 @@ class MyResource {
     public void myConsumer() throws Exception{
         String retValue;
         // 多线程环境的判断，一定要使用while进行，防止出现虚假唤醒
-        // 当FLAG为true的时候，开始生产
+        // 当FLAG为true的时候，开始消费
         while(FLAG) {
             // 2秒存入1个data
             retValue = blockingQueue.poll(2L, TimeUnit.SECONDS);
