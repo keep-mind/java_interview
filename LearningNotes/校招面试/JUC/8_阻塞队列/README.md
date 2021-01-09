@@ -80,7 +80,7 @@ BlockingQueue阻塞队列是属于一个接口，底下有七个实现类
 
 ### 抛出异常组
 
-但执行add方法，向已经满的ArrayBlockingQueue中添加元素时候，会抛出异常
+当执行add方法，向已经满的ArrayBlockingQueue中添加元素时候，会抛出异常
 
 ```
 // 阻塞队列，需要填入默认值
